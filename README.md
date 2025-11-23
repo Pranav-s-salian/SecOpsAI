@@ -241,15 +241,6 @@ Toggle the **"Auto Mode"** switch in the dashboard.
 
 ---
 
-## 📸 Screenshots
-
-*(Placeholders for your actual screenshots)*
-
-| Dashboard View | AI Analysis |
-|:---:|:---:|
-| ![Dashboard](https://via.placeholder.com/400x200?text=Interactive+Dashboard) | ![Analysis](https://via.placeholder.com/400x200?text=AI+Security+Insights) |
-
----
 
 ## 🤝 Contributing
 

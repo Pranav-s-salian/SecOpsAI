@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Enterprise Security Theme - Dark Mode */
+    --background: 0 0% 4%;
+    --background-secondary: 0 0% 10%;
+    --background-elevated: 0 0% 12%;
+    --foreground: 0 0% 100%;
+    --foreground-secondary: 220 9% 61%;
+    --foreground-muted: 220 9% 42%;
+
+    /* Card surfaces */
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 100%;
+    --card-border: 0 0% 18%;
+
+    /* Popover */
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primary - Crimson Red Accent */
+    --primary: 0 79% 51%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 0 79% 51% / 0.2;
+
+    /* Secondary surfaces */
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted elements */
+    --muted: 0 0% 18%;
+    --muted-foreground: 220 9% 61%;
+
+    /* Accent */
+    --accent: 0 79% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status colors */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --error: 0 72% 51%;
+    --error-foreground: 0 0% 100%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Severity badges */
+    --severity-critical: 0 79% 51%;
+    --severity-high: 0 79% 51% / 0.1;
+    --severity-medium: 38 92% 50%;
+    --severity-low: 142 71% 45%;
+    --severity-info: 217 91% 60%;
+
+    /* Border and inputs */
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 79% 51%;
+
+    --radius: 0.5rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 4%) 0%, hsl(0 0% 8%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 12%) 0%, hsl(0 0% 10%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(0 79% 51%) 0%, hsl(0 79% 45%) 100%);
+
+    /* Shadows */
+    --shadow-elevated: 0 10px 30px -10px hsl(0 79% 51% / 0.1);
+    --shadow-glow: 0 0 40px hsl(0 79% 51% / 0.15);
+    --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease-in-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background-secondary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+}
+
+@layer utilities {
+  /* Grid background pattern */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(0 0% 18% / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(0 0% 18% / 0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Glow effects */
+  .glow-red {
+    box-shadow: 0 0 20px hsl(var(--primary-glow));
+  }
+
+  .glow-red-hover:hover {
+    box-shadow: 0 0 30px hsl(var(--primary-glow));
+  }
+
+  /* Text gradient */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-error bg-clip-text text-transparent;
+  }
+
+  /* Pulse animation */
+  .pulse-dot {
+    animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Slide animations */
+  .slide-in-right {
+    animation: slide-in-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Shake animation */
+  .shake {
+    animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  }
+
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  /* Typewriter effect */
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--primary));
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: hsl(var(--primary));
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
